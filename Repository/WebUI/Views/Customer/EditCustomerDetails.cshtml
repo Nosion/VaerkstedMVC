@@ -1,0 +1,45 @@
+﻿@model Repository.Entities.Customer
+
+<h2>EditCustomerDetails</h2>
+
+
+@using (Html.BeginForm())
+{
+    <input class="btn btn-default" type="submit" value="Save" />
+    @Html.ActionLink("Cancle", "GetCustomerDetails", new { customerId = Model.Id }, new { @Class = "btn btn-danger" })
+    <div class="form-group">
+        <h4>Customer</h4>
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Company)
+            @Html.EditorFor(model => model.Company)
+            @Html.ValidationMessageFor(model => model.Company)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone)
+            @Html.EditorFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+            
+        <p>
+           
+        </p>
+
+        @foreach (var car in Model.cars)
+        {
+
+            @Html.DisplayFor(m => car.Manufacturer)
+
+
+        }
+    </div>    
+
+}
+
+
+

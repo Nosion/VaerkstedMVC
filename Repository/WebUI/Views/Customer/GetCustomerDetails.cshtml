@@ -1,0 +1,163 @@
+﻿@model Repository.Entities.Customer
+
+
+
+<h2>GetCustomerDetails</h2>
+
+<p>
+    @Html.ActionLink("Back", "GetCustomerData", null, new { @Class = "btn btn-primary" })
+
+
+
+</p>
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        @Html.ActionLink("Edit customer info", "EditCustomerDetails", new { customerId = Model.Id }, new { @Class = "btn btn-danger" })
+    </dl>
+    <h4>Car list</h4>
+    @*<div class="col-lg-6">*@
+        <div class="panel panel-default">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            PlateNumber
+                        </th>
+                        <th>
+                            ChassisNumber
+                        </th>
+                        <th>
+                            Manufacturer
+                        </th>
+                        <th>
+                            Model
+                        </th>
+                        <th>
+                            Year
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.cars != null)
+                    {
+                        foreach (var car in Model.cars)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(m => car.PlateNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => car.ChassisNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => car.Manufacturer)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => car.Model)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => car.Year)
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <th>
+                                No Cars registred on this customer
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+@*</div>*@
+<h4>Task history</h4>
+@*<div class="col-lg-6">*@
+    <div class="panel panel-default">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        CreatedStamp
+                    </th>
+                    <th>
+                        Created By
+                    </th>
+                    <th>
+                        Done Stamp
+                    </th>
+                    <th>
+                        Description (Of problem)
+                    </th>
+                    <th>
+                        Comments (From Employee)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.cars != null)
+                {
+                    foreach (var car in Model.cars)
+                    {
+                        foreach (var item in car.tasks)
+                        {
+                            <tr>
+                                <td>
+                                    @item.CreatedStamp
+                                </td>
+                                <td>
+                                    @item.CreatedBy
+                                </td>
+                                <td>
+                                    @item.CreatedStamp
+                                </td>
+                                <td>
+                                    @item.DoneStamp
+                                </td>
+                                <td>
+                                    @item.Comments
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <th>
+                            No history registred on this customer
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+@*</div>*@

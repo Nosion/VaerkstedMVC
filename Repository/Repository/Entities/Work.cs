@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository
+namespace Repository.Entities
 {
-    public class Class1
+    public class Work
     {
+        public int TimeSpent { get; set; }
+
     }
 }

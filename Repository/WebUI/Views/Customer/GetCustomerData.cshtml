@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Repository.Entities.Customer>
+
+@{
+    ViewBag.Title = "GetCustomerData";
+}
+
+<h2>GetCustomerData</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateNewCustomer", null, new { @Class = "btn btn-primary" })
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        <div class="col-lg-6">
+            <div class="input-group">
+                @Html.TextBox("SearchStr", null, new { @class = "form-control" }) <br />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" value="Search">Søg </button>
+                </span>
+            </div>
+        </div>
+    </p>
+}
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "GetCustomerDetails", new { customerId = item.Id }) 
+            </td>
+        </tr>
+
+    }
+
+
+
+</table>
